@@ -1,0 +1,2 @@
+2025-04-21 17:40:43 - Appointment saved in DB
+2025-04-21 17:40:45 - Event added to lecturer calendar
