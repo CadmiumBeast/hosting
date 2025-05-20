@@ -1,6 +1,5 @@
-IF DATABASE EXISTS CCassignment1 THEN
-    DROP DATABASE CCassignment1;
-END IF;
+DROP DATABASE IF EXISTS CCassignment1;
+
 
 CREATE DATABASE CCassignment1;
 USE CCassignment1;
