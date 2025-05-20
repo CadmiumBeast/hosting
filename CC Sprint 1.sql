@@ -1,3 +1,7 @@
+IF DATABASE EXISTS CCassignment1 THEN
+    DROP DATABASE CCassignment1;
+END IF;
+
 CREATE DATABASE CCassignment1;
 USE CCassignment1;
 
@@ -61,7 +65,7 @@ CREATE TABLE appointmentnote (
     appointment_id INT NOT NULL,
     note VARCHAR(255) NOT NULL,
     
-    FOREIGN KEY (appointment_id) REFERENCES appointbooking(appointment_id) ON DELETE CASCADE
+    FOREIGN KEY (appointment_id) REFERENCES appointBooking(appointment_id) ON DELETE CASCADE
 );
 
 
