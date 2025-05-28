@@ -70,7 +70,7 @@ $conn->close();
         <!-- Options Row -->
         <div class="w-full flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8">
             <!-- Book A Discussion Room -->
-            <a href="StudBookDIsc.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+            <a href="StudBookDisc.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
                 <!-- <img src="CCimages/discussion_room.jpg" alt="Discussion Room" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
                 <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
                     <span class="text-white text-xl font-bold text-center">Book A<br>Discussion Room</span>
