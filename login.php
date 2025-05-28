@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST["password"]);
 
     if (!empty($email) && !empty($password)) {
-        $stmt = $conn->prepare("SELECT user_id, email, password, role FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT user_id, email, password, role,name FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["email"] = $user["email"];
                 $_SESSION["user_id"] = $user["user_id"];
                 $_SESSION["role"] = $user["role"];
+                $_SESSION["name"] = $user["name"];
 
                 // Redirect based on role
                 if ($user["role"] === "Student") {

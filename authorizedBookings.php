@@ -8,22 +8,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-screen bg-cover bg-center flex flex-col items-center" style="background-color: #00796b;">
+<body class="min-h-screen bg-cover bg-center flex flex-col items-center px-4" style="background-color:rgba(0, 121, 107, 0.41);">
 
 
 
-    <!-- Header Section -->
-    <div class="w-3/4 relative mt-6">
-        <div class="relative w-full h-40 rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <span class="text-white text-3xl font-bold">Authorized Bookings</span>
-            </div>
+    <!-- Header with Notification and Logout -->
+    <div class="w-full flex justify-between items-center p-4">
+        <!-- Logo -->
+        <div>
+            <a href="LibDiscBook.php" class="flex items-center space-x-2">
+                <img src="CCimages/Click2BookLogo.png" alt="App Logo" class="h-16 w-auto max-w-[150px] sm:max-w-[200px]">
+            </a>
+        </div>
+        <!-- Buttons -->
+        <div class="flex space-x-4">
+            <a href="LibDiscBook.php" class="p-2 bg-white text-black rounded-full shadow text-center">Back</a>
+            <a href="logout.php" class="p-2 bg-white text-black rounded-full shadow text-center">Logout</a>
+        </div>
+    </div>
+
+    <div class="w-full sm:w-11/12 md:w-3/4 mt-6">
+        <div class="w-full h-28 sm:h-36 rounded-xl bg-[#00796b] flex items-center justify-center px-4">
+            <span class="text-black text-xl sm:text-3xl font-bold text-center">Authorized Booking</span>
         </div>
     </div>
 
     <!-- Approved Booking Requests Table -->
-    <div class="w-3/4 bg-white p-6 mt-6 rounded-xl shadow-md">
-        <h2 class="text-2xl font-bold mb-4">Approved Bookings</h2>
+    <div class="w-full sm:w-11/12 md:w-3/4 bg-white p-4 sm:p-6 mt-6 rounded-xl shadow-md">
         <div id="approvedBookings" class="overflow-x-auto">
             <p class="text-gray-500">Loading...</p>
         </div>

@@ -34,17 +34,21 @@ $conn->close();
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-screen bg-cover bg-center flex flex-col items-center" style="background-color: #00796b;">
+<body class="h-screen bg-cover bg-center flex flex-col items-center" style="background-color:rgba(0, 121, 107, 0.41);">
 
-    <!-- Header with Notification and Logout -->
     <div class="w-full flex justify-between items-center p-4">
+        <!-- Logo on the left -->
+        <div>
+            <a href="StudHomepage.php" class="flex items-center space-x-2">
+                <img src="CCimages/Click2BookLogo.png" alt="App Logo" class="h-25 w-1/4"> <!-- Change the src to your logo file -->
+                
+            </a>
+        </div>
+        <!-- Notification and Logout on the right -->
         <div class="flex space-x-4">
             <button onclick="window.location.href='studNotifications.php'" class="p-2 bg-white rounded-full shadow">
-                <img src="CCimages/BellLogo.svg" alt="Notifications" class="h-6 w-6">
+                <img src="CCimages/BellLogo.svg" alt="Notifications" class="h-[20px] w-[20px] min-w-[20px] min-h-[20px]">
             </button>
-        </div>
-
-        <div>
             <a href="logout.php" class="p-2 bg-white text-black rounded-full shadow">
                 Logout
             </a>
@@ -55,27 +59,42 @@ $conn->close();
     <div class="w-3/4 relative mt-6">
         <div class="relative w-full h-40 rounded-xl overflow-hidden">
             <div class="absolute inset-0 flex items-center justify-center">
-                <span class="text-white text-5xl font-bold">Welcome, Student!</span>
+                <span class="text-[#00796b] text-5xl font-bold">Welcome, <?php echo($_SESSION["name"])  ?></span>
             </div>
         </div>
     </div>
 
     <!-- Student Options -->
-    <div class="w-3/4 mt-8 space-y-4 flex flex-col items-center">
+    <div class="w-3/4 mt-8 flex flex-col items-center space-y-8">
 
-        <a href="StudBookDIsc.php" class="block relative w-full h-40 rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <span class="text-white text-3xl font-bold">Book A Discussion Room</span>
-            </div>
-        </a>
+        <!-- Options Row -->
+        <div class="w-full flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8">
+            <!-- Book A Discussion Room -->
+            <a href="StudBookDIsc.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/discussion_room.jpg" alt="Discussion Room" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">Book A<br>Discussion Room</span>
+                </div>
+            </a>
 
-        <a href="lecturerBooking.php" class="block relative w-full h-40 rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <span class="text-white text-3xl font-bold">Book A Lecturer Appointment</span>
-            </div>
-        </a>
+            <!-- Book A Lecturer Appointment -->
+            <a href="lecturerBooking.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/lecturer_appointment.jpg" alt="Lecturer Appointment" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">Book A<br>Lecturer Appointment</span>
+                </div>
+            </a>
 
-        <!-- Connect Google Calendar Button -->
+            <!-- Appointment Notes -->
+            <a href="studentappointmentnotes.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/appointment_notes.jpg" alt="Appointment" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">Appointment</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Connect Google Calendar Button/Status -->
         <div class="w-full flex justify-center">
             <?php if (!$googleConnected): ?>
                 <a href="https://accounts.google.com/o/oauth2/auth?client_id=657887578144-18jlcl7uf4bsliqmu2m7aaltd6st5bmj.apps.googleusercontent.com&redirect_uri=http://localhost/CC/googleCallback.php&scope=https://www.googleapis.com/auth/calendar&response_type=code&access_type=offline&prompt=consent"
@@ -90,6 +109,7 @@ $conn->close();
         </div>
 
     </div>
+
 
 </body>
 

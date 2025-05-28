@@ -21,6 +21,8 @@ if (isset($_SESSION["user_id"])) {
     $googleConnected = !empty($accessToken);
 }
 
+
+
 $conn->close();
 
 function dd($data)
@@ -42,13 +44,18 @@ function dd($data)
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-screen bg-cover bg-center flex flex-col items-center" style="background-color: #00796b;">
+<body class="h-screen bg-cover bg-center flex flex-col items-center" style="background-color:rgba(0, 121, 107, 0.41);">
 
     <!-- Header with Notification and Logout -->
     <div class="w-full flex justify-between items-center p-4">
-    
-
+        <!-- Logo on the left -->
         <div>
+            <a href="LecHomepage.php" class="flex items-center space-x-2">
+               <img src="CCimages/Click2BookLogo.png" alt="App Logo" class="h-16 w-auto max-w-[150px] sm:max-w-[200px]">                
+            </a>
+        </div>
+        <!-- Notification and Logout on the right -->
+        <div class="flex space-x-4">
             <a href="logout.php" class="p-2 bg-white text-black rounded-full shadow">
                 Logout
             </a>
@@ -59,32 +66,50 @@ function dd($data)
     <div class="w-3/4 relative mt-6">
         <div class="relative w-full h-40 rounded-xl overflow-hidden">
             <div class="absolute inset-0 flex items-center justify-center">
-                <span class="text-white text-5xl font-bold">Welcome, Lecturer!</span>
+                <span class="text-[#00796b] text-5xl font-bold">Welcome, <?php echo($_SESSION["name"])  ?></span>
             </div>
         </div>
     </div>
 
     <!-- Lecturer Options -->
-    <div class="w-3/4 mt-8 space-y-4 flex flex-col items-center">
+    <div class="w-3/4 mt-8 flex flex-col items-center space-y-8">
 
-        <a href="appointmentRequests.php" class="block relative w-full h-40 rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <span class="text-white text-3xl font-bold">View Appointments</span>
-            </div>
-        </a>
+        <!-- Options Row -->
+        <div class="w-full flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8">
+            <!-- View Appointments -->
+            <a href="appointmentRequests.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/appointments.jpg" alt="Appointments" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">View<br>Appointments</span>
+                </div>
+            </a>
 
-        <a href="LecBookDisc.php" class="block relative w-full h-40 rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <span class="text-white text-3xl font-bold">Book A Discussion Room</span>
-            </div>
-        </a>
-        <a href="LecManSlots.php" class="block relative w-full h-40 rounded-xl overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <span class="text-white text-3xl font-bold">Manage Free Slots</span>
-            </div>
-        </a>
+            <!-- Book A Discussion Room -->
+            <a href="LecBookDisc.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/discussion_room.jpg" alt="Discussion Room" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">Book A<br>Discussion Room</span>
+                </div>
+            </a>
 
-        <!-- Connect Google Calendar Button -->
+            <!-- Manage Free Slots -->
+            <a href="LecManSlots.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/free_slots.jpg" alt="Free Slots" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">Manage<br>Free Slots</span>
+                </div>
+            </a>
+
+            <!-- Booking Summary -->
+            <a href="appointmentSummary.php" class="block relative w-full md:w-1/4 h-72 rounded-xl overflow-hidden shadow-lg bg-[#00796b] hover:scale-105 transition">
+                <!-- <img src="CCimages/free_slots.jpg" alt="Free Slots" class="absolute inset-0 w-full h-full object-cover opacity-70"> -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+                    <span class="text-white text-xl font-bold text-center">Appointment Booking<br>Summary</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Connect Google Calendar Button/Status -->
         <div class="w-full flex justify-center">
             <?php if (!$googleConnected): ?>
                 <a href="https://accounts.google.com/o/oauth2/auth?client_id=657887578144-18jlcl7uf4bsliqmu2m7aaltd6st5bmj.apps.googleusercontent.com&redirect_uri=http://localhost/CC/googleCallback.php&scope=https://www.googleapis.com/auth/calendar&response_type=code&access_type=offline&prompt=consent"
@@ -98,7 +123,6 @@ function dd($data)
             <?php endif; ?>
         </div>
     </div>
-
 </body>
 
 </html>

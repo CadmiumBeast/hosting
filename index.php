@@ -49,14 +49,15 @@ session_start();
     </style>
 </head>
 
-<body class="h-screen flex">
+<body class="h-screen flex flex-col md:flex-row">
+
     <!-- Left Section (Image) -->
-    <div class="w-2/3 h-full">
+    <div class="w-full md:w-2/3 h-64 md:h-full">
         <img src="CCimages/loginpage.png" alt="Chic Kicks" class="w-full h-full object-cover">
     </div>
 
     <!-- Right Section (Form) -->
-    <div class="w-1/3 h-full flex items-center justify-center bg-white">
+    <div class="w-full md:w-1/3 h-full flex items-center justify-center bg-white">
         <div class="w-3/4 max-w-md">
             <div class="mb-4 flex items-center justify-center">
                 <img src="CCimages/Click2BookLogo.png" alt="Logo" class="h-16">
