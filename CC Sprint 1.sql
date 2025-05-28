@@ -16,7 +16,7 @@ CREATE TABLE users (
 );
 
 -- Discussion Room Table
-CREATE TABLE discussionRoom (
+CREATE TABLE discussionroom (
     discroom_id INT AUTO_INCREMENT PRIMARY KEY,
     discroom_name VARCHAR(50) NOT NULL,
     Location VARCHAR(50) NOT NULL
@@ -32,7 +32,7 @@ CREATE TABLE lecturer_timeslots (
 );
 
 -- Discussion Room Booking Table
-CREATE TABLE discRoomBooking (
+CREATE TABLE discroombooking (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     discroom_id INT NOT NULL,
@@ -42,9 +42,9 @@ CREATE TABLE discRoomBooking (
     numStudents INT NOT NULL DEFAULT 1, 
     status VARCHAR(20) DEFAULT 'Pending', 
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (discroom_id) REFERENCES discussionRoom(discroom_id) ON DELETE CASCADE
+    FOREIGN KEY (discroom_id) REFERENCES discussionroom(discroom_id) ON DELETE CASCADE
 );
-CREATE TABLE appointBooking (
+CREATE TABLE appointbooking (
     appointment_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,   -- the one who books the appointment
     lecturer_id INT NOT NULL,   -- the one with whom the appointment is booked
@@ -64,15 +64,15 @@ CREATE TABLE appointmentnote (
     appointment_id INT NOT NULL,
     note VARCHAR(255) NOT NULL,
     
-    FOREIGN KEY (appointment_id) REFERENCES appointBooking(appointment_id) ON DELETE CASCADE
+    FOREIGN KEY (appointment_id) REFERENCES appointbooking(appointment_id) ON DELETE CASCADE
 );
 
 
 -- Set auto-increment values
 ALTER TABLE users AUTO_INCREMENT = 5000;
-ALTER TABLE discussionRoom AUTO_INCREMENT = 300;
-ALTER TABLE discRoomBooking AUTO_INCREMENT = 10000;
-ALTER TABLE discRoomBooking AUTO_INCREMENT = 15000;
+ALTER TABLE discussionroom AUTO_INCREMENT = 300;
+ALTER TABLE discRoombooking AUTO_INCREMENT = 10000;
+ALTER TABLE discRoombooking AUTO_INCREMENT = 15000;
 
 
 
@@ -100,7 +100,7 @@ INSERT INTO users (email, password, name, `role`) VALUES
 ('wathsala@apiit.lk', 'password20', 'Wathsala', 'Librarian');
 
 -- Insert Discussion Rooms
-INSERT INTO discussionRoom (discroom_name, Location) VALUES
+INSERT INTO discussionroom (discroom_name, Location) VALUES
 ('Discussion Room 1','City'),
 ('Discussion Room 2','City'),
 ('Discussion Room 3','City');
