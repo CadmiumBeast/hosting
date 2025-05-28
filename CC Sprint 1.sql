@@ -71,8 +71,8 @@ CREATE TABLE appointmentnote (
 -- Set auto-increment values
 ALTER TABLE users AUTO_INCREMENT = 5000;
 ALTER TABLE discussionroom AUTO_INCREMENT = 300;
-ALTER TABLE discRoombooking AUTO_INCREMENT = 10000;
-ALTER TABLE discRoombooking AUTO_INCREMENT = 15000;
+ALTER TABLE discroombooking AUTO_INCREMENT = 10000;
+ALTER TABLE discroombooking AUTO_INCREMENT = 15000;
 
 
 
