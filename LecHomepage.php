@@ -2,7 +2,7 @@
 session_start();
 
 // Database connection
-$conn = new mysqli("localhost", "root", "", "CCassignment1", 3309);
+$conn = new mysqli("cliq2book.c2f0gy0es42a.us-east-1.rds.amazonaws.com", "admin", "pineapple", "CCassignment1", 3306);
 
 // Check connection
 if ($conn->connect_error) {
@@ -112,7 +112,7 @@ function dd($data)
         <!-- Connect Google Calendar Button/Status -->
         <div class="w-full flex justify-center">
             <?php if (!$googleConnected): ?>
-                <a href="https://accounts.google.com/o/oauth2/auth?client_id=657887578144-18jlcl7uf4bsliqmu2m7aaltd6st5bmj.apps.googleusercontent.com&redirect_uri=http://localhost/CC/googleCallback.php&scope=https://www.googleapis.com/auth/calendar&response_type=code&access_type=offline&prompt=consent"
+                <a href="https://accounts.google.com/o/oauth2/auth?client_id=657887578144-18jlcl7uf4bsliqmu2m7aaltd6st5bmj.apps.googleusercontent.com&redirect_uri=https://cliq2book.me/googleCallback.php&scope=https://www.googleapis.com/auth/calendar&response_type=code&access_type=offline&prompt=consent"
                     class="bg-yellow-500 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600">
                     Connect Google Calendar
                 </a>

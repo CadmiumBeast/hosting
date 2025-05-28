@@ -5,10 +5,17 @@ include "db.php"; // Connect to your database
 
 $client = new Google_Client();
 $client->setAuthConfig('client_secret.json');
-$client->setRedirectUri('http://localhost/CC/googleCallback.php');
+$client->setRedirectUri('https://cliq2book.me/googleCallback.php');
 $client->addScope(Google_Service_Calendar::CALENDAR);
+$client->setClientId('657887578144-18jlcl7uf4bsliqmu2m7aaltd6st5bmj.apps.googleusercontent.com');
+$client->setClientSecret('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');
 $client->setAccessType('offline');
 $client->setPrompt('consent'); // to ensure refresh_token is returned
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 if (isset($_GET['code'])) {
     try {

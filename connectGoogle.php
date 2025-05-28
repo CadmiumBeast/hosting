@@ -4,7 +4,7 @@ session_start();
 
 $client = new Google_Client();
 $client->setAuthConfig('client_secret.json');
-$client->setRedirectUri('http://localhost/CC/googleCallback.php');
+$client->setRedirectUri('https://cliq2book/googleCallback.php');
 $client->addScope(Google_Service_Calendar::CALENDAR);
 $client->setAccessType('offline');
 $client->setPrompt('consent');
