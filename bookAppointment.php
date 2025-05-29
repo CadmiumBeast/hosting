@@ -2,6 +2,7 @@
 session_start();
 require_once 'vendor/autoload.php';
 include 'db.php';
+include 'mail.php';
 
 // Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -135,6 +136,37 @@ if (!empty($users[$lecturer_id]['google_access_token'])) {
         $stmt->close();
     }
 }
+
+// Fetch lecturer details
+$stmt = $conn->prepare("SELECT name, email FROM users WHERE user_id = ?");
+$stmt->bind_param("i", $lecturer_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$lecturer_mail = $row['email'];
+$lecName = $row['name'];
+$stmt->close();
+
+$stmt = $conn->prepare("SELECT start_time,end_time FROM lecturer_timeslots WHERE id = ?");
+$stmt->bind_param("i", $timeslot);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$start_time = $row['start_time'];
+$end_time = $row['end_time'];
+$stmt->close();
+
+
+$startDateTime = date('c', strtotime($start_time));
+$endDateTime = date('c', strtotime($end_time));
+
+
+// Send email to lecturer
+$eventsummary = "Appointment with $users[$student_id]['name']";
+$eventdescription = "Appointment with $users[$student_id]['name'] for $purpose";
+sendMeetingEmail($lecturer_mail,$lecName,$users[$student_id]['name'],$eventsummary  ,$eventdescription,"",$start_time,$end_time);
+
+
 
 echo "<script>alert('Appointment booked successfully!'); window.location.href = 'StudHomepage.php';</script>";
 ?>
