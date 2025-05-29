@@ -2,6 +2,7 @@
 session_start();
 require_once 'vendor/autoload.php';
 include 'db.php';
+include 'mail.php';
 
 // Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -164,6 +165,7 @@ $endDateTime = date('c', strtotime($end_time));
 $eventsummary = "Appointment with $users[$student_id]['name']";
 $eventdescription = "Appointment with $users[$student_id]['name'] for $purpose";
 sendMeetingEmail($lecturer_mail,$lecName,$users[$student_id]['name'],$eventsummary  ,$eventdescription,"",$start_time,$end_time);
+
 
 
 echo "<script>alert('Appointment booked successfully!'); window.location.href = 'StudHomepage.php';</script>";
