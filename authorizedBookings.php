@@ -44,7 +44,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             let div = document.getElementById("approvedBookings");
 
-            fetch("http://localhost/CC/getApprovedBookings.php") 
+            fetch("https://cliq2book.me/getApprovedBookings.php") 
                 .then(response => response.json())
                 .then(data => {
                     console.log(data); 

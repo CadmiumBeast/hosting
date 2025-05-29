@@ -34,7 +34,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             let div = document.getElementById("notifications");
 
-            fetch("http://localhost/CC/getStudNotifications.php")
+            fetch("https://cliq2book.me/getStudNotifications.php")
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

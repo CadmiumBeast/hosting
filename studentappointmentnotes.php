@@ -2,7 +2,7 @@
 
 session_start();
 // Database connection
-$conn = new mysqli("localhost", "root", "", "CCassignment1", 3309);
+$conn = new mysqli("cliq2book.c2f0gy0es42a.us-east-1.rds.amazonaws.com", "admin", "pineapple", "CCassignment1", 3306);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
