@@ -10,7 +10,7 @@ $query = "SELECT
             drb.timeslot, 
             drb.purpose, 
             drb.numStudents 
-          FROM discRoomBooking drb
+          FROM discroombooking drb
           JOIN discussionRoom dr ON drb.discroom_id = dr.discroom_id
           JOIN users u ON drb.user_id = u.user_id
           WHERE drb.status = 'Pending'";
