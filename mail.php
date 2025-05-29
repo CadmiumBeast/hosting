@@ -42,8 +42,8 @@ function sendMeetingEmail($recipientEmail, $recipientName, $studentmail, $eventS
         $mail->isSMTP();
         $mail->Host = 'sandbox.smtp.mailtrap.io'; // Set your SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = '09debc3531675d'; // SMTP username
-        $mail->Password = '33132fd2bde7fa'; // SMTP password
+        $mail->Username = 'bacb16d4a2ea18'; // SMTP username
+        $mail->Password = '72c5229cc155fc'; // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 2525;
 

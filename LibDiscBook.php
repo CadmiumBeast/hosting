@@ -9,7 +9,7 @@ if ($conn->connect_error) {
 }
 
 // Check if there are any pending bookings
-$sql = "SELECT COUNT(*) as pending_count FROM discRoomBooking WHERE status = 'Pending'";
+$sql = "SELECT COUNT(*) as pending_count FROM discroombooking WHERE status = 'Pending'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $hasPending = $row['pending_count'] > 0;

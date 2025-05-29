@@ -19,7 +19,7 @@ $lecturerId = $_SESSION["user_id"];
 // Fetch appointments for the lecturer (where the lecturer is assigned to the appointment)
 $sql = "SELECT a.appointment_id, a.date, a.purpose, a.status, s.name AS student, 
        lt.start_time, lt.end_time
-        FROM appointBooking a
+        FROM appointbooking a
         JOIN users s ON a.student_id = s.user_id
         JOIN lecturer_timeslots lt ON a.timeslot_id = lt.id
         WHERE a.lecturer_id = ?";

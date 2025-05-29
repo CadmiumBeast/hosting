@@ -71,7 +71,7 @@ $status = in_array($data['status'], ["Approved", "Rejected"]) ? $data['status'] 
 }
 
 
-$query = "UPDATE discRoomBooking SET status = ? WHERE booking_id = ?";
+$query = "UPDATE discroombooking SET status = ? WHERE booking_id = ?";
 $stmt = mysqli_prepare($conn, $query);
 
 if ($stmt) {

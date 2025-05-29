@@ -14,7 +14,7 @@ $notifications = [];
 
 /** 🔔 Discussion Room Notifications */
 $query1 = "SELECT purpose, date, timeslot, status 
-           FROM discRoomBooking 
+           FROM discroombooking 
            WHERE user_id = ? 
            ORDER BY booking_id DESC";
 

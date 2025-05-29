@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare and execute the SQL query
-    $stmt = $conn->prepare("INSERT INTO discRoomBooking (user_id, discroom_id, date, timeslot, purpose, numStudents) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO discroombooking (user_id, discroom_id, date, timeslot, purpose, numStudents) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("iisssi", $user_id, $discroom_id, $date, $timeslot, $purpose, $numStudents);
 
     if ($stmt->execute()) {

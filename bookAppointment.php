@@ -25,7 +25,7 @@ $timeslot = $_POST['timeslot'];
 $purpose = $_POST['purpose'];
 
 // Insert into appointBooking table (without google_event_id initially)
-$stmt = $conn->prepare("INSERT INTO appointBooking (student_id, lecturer_id, date, timeslot_id, purpose) VALUES (?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO appointbooking (student_id, lecturer_id, date, timeslot_id, purpose) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("iisss", $student_id, $lecturer_id, $date, $timeslot, $purpose);
 $stmt->execute();
 $appointment_id = $stmt->insert_id;  // Get the last inserted appointment_id
@@ -113,7 +113,7 @@ if (!empty($users[$student_id]['google_access_token'])) {
 
     // If the event was created, update the appointment with the event ID
     if ($studentEventId) {
-        $stmt = $conn->prepare("UPDATE appointBooking SET google_event_id = ? WHERE appointment_id = ?");
+        $stmt = $conn->prepare("UPDATE appointbooking SET google_event_id = ? WHERE appointment_id = ?");
         $stmt->bind_param("si", $studentEventId, $appointment_id);
         $stmt->execute();
         $stmt->close();
@@ -129,7 +129,7 @@ if (!empty($users[$lecturer_id]['google_access_token'])) {
 
     // If the event was created, update the appointment with the event ID
     if ($lecturerEventId) {
-        $stmt = $conn->prepare("UPDATE appointBooking SET google_event_id = ? WHERE appointment_id = ?");
+        $stmt = $conn->prepare("UPDATE appointbooking SET google_event_id = ? WHERE appointment_id = ?");
         $stmt->bind_param("si", $lecturerEventId, $appointment_id);
         $stmt->execute();
         $stmt->close();

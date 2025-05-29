@@ -42,7 +42,7 @@
 
     <script>
         function updateStatus(bookingId, newStatus) {
-            fetch("http://localhost/CC/updateBookingStatus.php", {
+            fetch("https://cliq2book.me/updateBookingStatus.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ booking_id: bookingId, status: newStatus })
@@ -65,7 +65,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             let div = document.getElementById("bookingRequests");
 
-            fetch("http://localhost/CC/getBookingRequests.php") 
+            fetch("https://cliq2book.me/getBookingRequests.php") 
                 .then(response => response.json())
                 .then(data => {
                     console.log(data); 

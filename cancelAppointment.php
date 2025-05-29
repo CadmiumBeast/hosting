@@ -63,7 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Check if access token is expired
     $client = new Google_Client();
+    $client->setAuthConfig('client_secret.json');
+    $client->addScope(Google_Service_Calendar::CALENDAR);
     $client->setAccessToken($accessToken);
+
 
     if ($client->isAccessTokenExpired()) {
         if ($refreshToken) {
@@ -72,12 +75,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $newAccessToken = $client->getAccessToken();
 
             // Update the database with the new access token
-            $updateStmt = $conn->prepare("UPDATE users SET access_token = ? WHERE user_id = ?");
+            $updateStmt = $conn->prepare("UPDATE users SET google_access_token = ? WHERE user_id = ?");
             $updateStmt->bind_param("si", json_encode($newAccessToken), $lecturer_id);
             $updateStmt->execute();
 
             // Use the new access token
             $accessToken = json_encode($newAccessToken);
+		
         } else {
             echo json_encode(["success" => false, "error" => "Google access token expired. Please reconnect your calendar."]);
             exit();
